@@ -1,0 +1,87 @@
+# EL distros Kickstart file for the local test environment
+
+# Common settings
+text
+lang ${ks.lang}
+keyboard --vckeymap=${ks.vckeymap} --xlayouts=${ks.xlayouts}
+timezone ${ks.timezone} --utc%{ if major_version == 8 } --ntpservers=${join(",", ks.ntpservers)}%{ endif }
+%{ if major_version >= 9 }
+%{ for ntpserver in ks.ntpservers ~}
+timesource --ntp-server ${ntpserver}
+%{ endfor ~}
+%{ endif }
+selinux --permissive
+firewall --enabled --ssh
+services --enabled=sshd
+%{ if ks.authselect_profile != null ~}
+authselect select ${ks.authselect_profile}
+%{ endif ~}
+
+# Network
+%{ if network.address != null }
+network --device=link --bootproto=static --ip=${network.address} --netmask=${network.mask} --gateway=${network.gateway} --nameserver=${network.nameserver} --activate
+%{ endif }
+
+# Disk
+zerombr
+clearpart --all --initlabel
+reqpart --add-boot
+part swap --size=4096
+part / --size=1 --grow
+
+# user: root, password: bootloaderpass
+bootloader --append="console=tty0 console=ttyS0,115200n8" --iscrypted --password=grub.pbkdf2.sha512.10000.DFFFDD6C00C43F46716FC13C1D66F600E5CB167F18B50C5B5A51DC0E0A34F6CC06980A51044F6D85F1AA9B784088C69E89860D52455F09F799A6E6A048885F53.E773A5EB53E1F2FDB549011D884DAA1175BDFD44146BBEBE5C3A59D1938C3853A5268B72E784A718EE2186F99AB04348B5148991D1F5952B351DD46C59DC1685
+
+rootpw --plaintext "${ks.root_password}"
+user --name="${ks.packer_username}" --groups=wheel
+user --name="${ks.user.name}" --uid=5000 --gid=5000 --groups=wheel --plaintext --password="${ks.user.password}"
+sshkey --username="${ks.user.name}" "${ks.user.ssh_pubkey}"
+
+reboot --eject
+
+%packages
+@^minimal-environment
+@standard
+@development
+%end
+
+%post --interpreter=/usr/bin/bash --erroronfail --log=/root/ks-post.log
+
+# Prohibit ssh with password
+echo "PasswordAuthentication no" > /etc/ssh/sshd_config.d/00-base.conf
+
+# Create packer user
+# --- PACKER USER CREATION START ---
+umask 0077
+
+for x in $(cat /proc/cmdline); do
+  case "$${x}" in
+    PACKER_USER=*)
+      PACKER_USER="$${x#*=}"
+      ;;
+    PACKER_AUTHORIZED_KEY=*)
+      encoded=$(echo "$${x#*=}" | tr '+' ' ')
+      printf -v PACKER_AUTHORIZED_KEY '%b' "$${encoded//%/\\x}"
+      ;;
+  esac
+done
+
+if [[ -n "$${PACKER_USER}" ]]; then
+  useradd "$${PACKER_USER}"
+  echo "%$${PACKER_USER} ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/$${PACKER_USER}"
+
+  if [[ -n "$${PACKER_AUTHORIZED_KEY}" ]]; then
+    HOME_DIR=$(getent passwd "$${PACKER_USER}" | cut -d':' -f6)
+
+    mkdir -p "$${HOME_DIR}/.ssh"
+    chmod 700 "$${HOME_DIR}/.ssh"
+
+    echo "$${PACKER_AUTHORIZED_KEY}" > "$${HOME_DIR}/.ssh/authorized_keys"
+    chmod 600 "$${HOME_DIR}/.ssh/authorized_keys"
+
+    chown -R "$${PACKER_USER}:$${PACKER_USER}" "$${HOME_DIR}/.ssh"
+  fi
+fi
+# --- PACKER USER CREATION END ---
+
+%end

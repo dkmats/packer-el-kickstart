@@ -1,0 +1,29 @@
+{
+  "checksums": [
+    {
+      "id": "http/releases.hashicorp.com/packer/1.16.0/packer_1.16.0_darwin_arm64.zip",
+      "checksum": "6530042CF8F8A1F96B6607CB22B5BE298BE53B400CD4A2C81AB8B946964FCCDA",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "http/releases.hashicorp.com/packer/1.16.0/packer_1.16.0_linux_amd64.zip",
+      "checksum": "5EDCD14AB59B535040C512DBECD6EC9EF976A000B073C19D93E4C431C948581E",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "http/releases.hashicorp.com/packer/1.16.0/packer_1.16.0_linux_arm64.zip",
+      "checksum": "CF18F03460D92265D49B56BEFFF333E80641D845822799EAB04357C39F75B5D7",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "http/releases.hashicorp.com/packer/1.16.0/packer_1.16.0_windows_amd64.zip",
+      "checksum": "91A378D4E7F9C5363CAA196E23FD78717DA31D12FC6069C8BB892CDACCEB2EB8",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.563.0/registry.yaml",
+      "checksum": "180F82867167BFB2D7AE40273FFC4CFC613B8A2745BD190BBDE9F817B0B3DEBA",
+      "algorithm": "sha256"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# Line endings are converted from LF to CRLF on Windows.
+# Anaconda installer doesn't understand kickstart files with CRLF line endings.
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.editorconfig text eol=lf
+*.md text eol=lf
+*.ks text eol=lf
+*.ks.example text eol=lf
+*.pkr.hcl text eol=lf
+*.pkrvars.hcl.example text eol=lf
+.json5 text eol=lf
+.yml text eol=lf
