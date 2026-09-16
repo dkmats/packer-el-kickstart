@@ -4,6 +4,7 @@
 *.pkrvars.hcl
 *.pkrvars.json
 packer_cache
+output
 output-*
 *.box
 
