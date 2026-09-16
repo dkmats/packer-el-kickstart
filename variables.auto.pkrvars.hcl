@@ -38,7 +38,7 @@ ks = {
     # password = "testpass"
 
     # Set your SSH public key
-    ssh_pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINBFbe3PGauS2HyArZnTOVLxuQVVoEmG8lDc57Ggl+yA matsuyama_daiki@2022-09-07"
+    # ssh_pubkey = "ssh-ed25519 AAAA..."
   }
 }
 
