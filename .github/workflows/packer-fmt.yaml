@@ -20,4 +20,4 @@ jobs:
       - name: Format packer files
         run: packer fmt .
       - name: Run autofix.ci
-        uses: autofix-ci/action@v1.3.3
+        uses: autofix-ci/action@v1.3.4
