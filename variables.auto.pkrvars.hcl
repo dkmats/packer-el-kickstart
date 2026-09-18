@@ -21,11 +21,11 @@ output_directory  = "output"
 
 # Kickstart settings
 ks = {
-  ks_template_path = "ks.cfg.tftpl"
-  # lang             = "en_US.UTF-8"
-  # vckeymap         = "jp-OADG109A"
-  # xlayouts         = "jp(OADG109A)"
-  # timezone         = "Asia/Tokyo"
+  template_path = "ks.cfg.tftpl"
+  # lang          = "en_US.UTF-8"
+  # vckeymap      = "jp-OADG109A"
+  # xlayouts      = "jp(OADG109A)"
+  # timezone      = "Asia/Tokyo"
   # ntpservers = [
   #   "ntp1.jst.mfeed.ad.jp",
   #   "ntp2.jst.mfeed.ad.jp",
