@@ -29,7 +29,7 @@ jobs:
       - name: Install aqua
         uses: aquaproj/aqua-installer@v4.0.5
         with:
-          aqua_version: v2.62.3
+          aqua_version: v2.63.0
           aqua_args: i -l
 
       - name: Format Packer files
