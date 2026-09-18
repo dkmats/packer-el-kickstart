@@ -5,7 +5,7 @@
   "extends": [
     "config:recommended",
     "security:openssf-scorecard",
-    "helpers:pinGitHubActionDigests"
+    "helpers:pinGitHubActionDigests",
     "github>aquaproj/aqua-renovate-config:file#2.13.0(.aqua/.*\\.ya?ml)"
   ]
 }
