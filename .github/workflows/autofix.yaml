@@ -1,8 +1,9 @@
 name: autofix.ci
 on:
   pull_request:
-  push:
-    branches: ["main"]
+    paths:
+      - "**/*.pkr.hcl"
+      - ".aqua/aqua.yaml"
 permissions:
   contents: read
 jobs:
@@ -14,11 +15,30 @@ jobs:
         uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
+
+      - name: Check changed files
+        uses: dorny/paths-filter@v4.0.0
+        id: changes
+        with:
+          filters: |
+            packer:
+              - "**/*.pkr.hcl"
+            aqua:
+              - ".aqua/aqua.yaml"
+
       - name: Install aqua
         uses: aquaproj/aqua-installer@v4.0.5
         with:
           aqua_version: v2.62.3
+          aqua_args: i -l
+
+      - name: Format Packer files
+        if: steps.changes.outputs.packer == 'true'
+        run: packer fmt .
+
       - name: Fix aqua-checksums.json
+        if: steps.changes.outputs.aqua == 'true'
         run: aqua upc -prune
+
       - name: Run autofix.ci
         uses: autofix-ci/action@v1.3.4
