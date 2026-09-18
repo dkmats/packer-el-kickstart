@@ -36,9 +36,8 @@ arch             = "x86_64"
 distribution     = "almalinux"
 el_major_version = 10
 
-ks_template_path = "ks.cfg.tftpl"
-
 ks = {
+  template_path = "ks.cfg.tftpl"
   user = {
     ssh_pubkey = "ssh-ed25519 AAAA..."
   }

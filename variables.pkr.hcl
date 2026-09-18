@@ -220,6 +220,7 @@ variable "network" {
 
 variable "ks" {
   type = object({
+    template_path = string
     lang          = optional(string, "en_US.UTF-8")
     vckeymap      = optional(string, "jp-OADG109A")
     xlayouts      = optional(string, "jp(OADG109A)")
