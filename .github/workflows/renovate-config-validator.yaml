@@ -12,16 +12,11 @@ jobs:
   validate:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
-
-    container:
-      image: ghcr.io/renovatebot/renovate:43.38.1@sha256:ab23ec68d07c6ad22a40795efdaf5e3c8a987839f19ced9325cfb1789f14592f
-      options: --user 0
-
     steps:
       - name: Checkout the repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
-      - name: Validate Renovate configuration
-        run: renovate-config-validator renovate.json --strict
+      - name: Validate Renovate Configuration with renovate-config-validator
+        uses: suzuki-shunsuke/github-action-renovate-config-validator@v2.1.0
