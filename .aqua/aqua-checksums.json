@@ -1,23 +1,23 @@
 {
   "checksums": [
     {
-      "id": "http/releases.hashicorp.com/packer/1.15.0/packer_1.15.0_darwin_arm64.zip",
-      "checksum": "EBD8EB03503627471F39B036FF5DBB24070D21518D59AA8CBF962386257D21A4",
+      "id": "http/releases.hashicorp.com/packer/1.16.0/packer_1.16.0_darwin_arm64.zip",
+      "checksum": "6530042CF8F8A1F96B6607CB22B5BE298BE53B400CD4A2C81AB8B946964FCCDA",
       "algorithm": "sha256"
     },
     {
-      "id": "http/releases.hashicorp.com/packer/1.15.0/packer_1.15.0_linux_amd64.zip",
-      "checksum": "2FD1149C5C6C7604CED64D7B56638AF05F6B7ED3F6835182BC913DDABA1F16B8",
+      "id": "http/releases.hashicorp.com/packer/1.16.0/packer_1.16.0_linux_amd64.zip",
+      "checksum": "5EDCD14AB59B535040C512DBECD6EC9EF976A000B073C19D93E4C431C948581E",
       "algorithm": "sha256"
     },
     {
-      "id": "http/releases.hashicorp.com/packer/1.15.0/packer_1.15.0_linux_arm64.zip",
-      "checksum": "1687F43BD120601F62E54B970B1CC06F83E95897357DC5C679B57EC9D2FB40A7",
+      "id": "http/releases.hashicorp.com/packer/1.16.0/packer_1.16.0_linux_arm64.zip",
+      "checksum": "CF18F03460D92265D49B56BEFFF333E80641D845822799EAB04357C39F75B5D7",
       "algorithm": "sha256"
     },
     {
-      "id": "http/releases.hashicorp.com/packer/1.15.0/packer_1.15.0_windows_amd64.zip",
-      "checksum": "5CF875E39B5D4AD552DD0E6F52A6E46C6D0B6B0EE1F8104824445892FEBE58C6",
+      "id": "http/releases.hashicorp.com/packer/1.16.0/packer_1.16.0_windows_amd64.zip",
+      "checksum": "91A378D4E7F9C5363CAA196E23FD78717DA31D12FC6069C8BB892CDACCEB2EB8",
       "algorithm": "sha256"
     },
     {
