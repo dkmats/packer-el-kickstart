@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 5
 
     container:
-      image: ghcr.io/renovatebot/renovate:43.38.1
+      image: ghcr.io/renovatebot/renovate:43.38.1@sha256:ab23ec68d07c6ad22a40795efdaf5e3c8a987839f19ced9325cfb1789f14592f
       options: --user 0
 
     steps:
