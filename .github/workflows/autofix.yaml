@@ -12,12 +12,12 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Check changed files
-        uses: dorny/paths-filter@v4.0.3
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         id: changes
         with:
           filters: |
@@ -27,7 +27,7 @@ jobs:
               - ".aqua/aqua.yaml"
 
       - name: Install aqua
-        uses: aquaproj/aqua-installer@v4.0.5
+        uses: aquaproj/aqua-installer@96a9bc20066c5bf5e275b41019cfc165b25f4e2e # v4.0.5
         with:
           aqua_version: v2.63.0
           aqua_args: i -l
@@ -41,4 +41,4 @@ jobs:
         run: aqua upc -prune
 
       - name: Run autofix.ci
-        uses: autofix-ci/action@v1.3.4
+        uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a # v1.3.4
