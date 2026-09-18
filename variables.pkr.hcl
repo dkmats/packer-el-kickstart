@@ -13,7 +13,7 @@ variable "distribution" {
   type        = string
 
   validation {
-    condition     = contains(["almalinux", "rocky"], var.distribution)
+    condition     = contains(["almalinux", "rocky", "oracle", "oracle-uek"], var.distribution)
     error_message = "The variable `distribution` must be \"almalinux\" or \"rocky\"."
   }
 }
@@ -31,16 +31,27 @@ variable "el_major_version" {
   }
 }
 
-variable "ks_template_path" {
-  description = "Kickstart template file path."
+variable "oracle_minor_version" {
+  description = "Oracle Linux minor version"
+  type        = number
+  default     = null
 
-  type = string
+  validation {
+    condition = (
+      var.oracle_minor_version == null ||
+      (
+        var.oracle_minor_version <= 10 &&
+        var.oracle_minor_version == floor(var.oracle_minor_version)
+      )
+    )
+    error_message = "The variable `oracle_minor_version` must be null or an integer less than or equal to 10."
+  }
 }
 
 # Common
 
 variable "vm_name" {
-  description = "VM name"
+  description = "The VM name"
 
   type    = string
   default = "test"
@@ -231,8 +242,10 @@ variable "ks" {
 
 locals {
   inst_repo = {
-    almalinux = "https://ftp.udx.icscoe.jp/Linux/almalinux/${var.el_major_version}/BaseOS/${var.arch}/kickstart/"
-    rocky     = "https://ftp.udx.icscoe.jp/Linux/rocky/${var.el_major_version}/BaseOS/${var.arch}/kickstart/"
+    almalinux  = "https://ftp.udx.icscoe.jp/Linux/almalinux/${var.el_major_version}/BaseOS/${var.arch}/kickstart/"
+    rocky      = "https://ftp.udx.icscoe.jp/Linux/rocky/${var.el_major_version}/BaseOS/${var.arch}/kickstart/"
+    oracle     = "https://yum.oracle.com/repo/OracleLinux/OL${var.el_major_version}/baseos/latest/${var.arch}/"
+    oracle-uek = "https://yum.oracle.com/repo/OracleLinux/OL${var.el_major_version}/baseos/latest/${var.arch}/"
   }
 
   iso_urls = {
@@ -244,11 +257,19 @@ locals {
       "https://ftp.udx.icscoe.jp/Linux/rocky/${var.el_major_version}/isos/${var.arch}/Rocky-${var.el_major_version}-latest-${var.arch}-boot.iso",
       "https://download.rockylinux.org/pub/rocky/${var.el_major_version}/isos/${var.arch}/Rocky-${var.el_major_version}-latest-${var.arch}-boot.iso",
     ]
+    oracle = var.oracle_minor_version != null ? [
+      "https://yum.oracle.com/ISOS/OracleLinux/OL${var.el_major_version}/u${var.oracle_minor_version}/${var.arch}/OracleLinux-R${var.el_major_version}-U${var.oracle_minor_version}-${var.arch}-boot.iso"
+    ] : null
+    oracle-uek = var.oracle_minor_version != null ? [
+      "https://yum.oracle.com/ISOS/OracleLinux/OL${var.el_major_version}/u${var.oracle_minor_version}/${var.arch}/OracleLinux-R${var.el_major_version}-U${var.oracle_minor_version}-${var.arch}-boot-uek.iso"
+    ] : null
   }
 
   iso_checksum = {
-    almalinux = "file:https://repo.almalinux.org/almalinux/${var.el_major_version}/isos/${var.arch}/CHECKSUM"
-    rocky     = "file:https://download.rockylinux.org/pub/rocky/${var.el_major_version}/isos/${var.arch}/CHECKSUM"
+    almalinux  = "file:https://repo.almalinux.org/almalinux/${var.el_major_version}/isos/${var.arch}/CHECKSUM"
+    rocky      = "file:https://download.rockylinux.org/pub/rocky/${var.el_major_version}/isos/${var.arch}/CHECKSUM"
+    oracle     = var.oracle_minor_version != null ? "file:https://linux.oracle.com/security/gpg/checksum/OracleLinux-R${var.el_major_version}-U${var.oracle_minor_version}-Server-${var.arch}.checksum" : null
+    oracle-uek = var.oracle_minor_version != null ? "file:https://linux.oracle.com/security/gpg/checksum/OracleLinux-R${var.el_major_version}-U${var.oracle_minor_version}-Server-${var.arch}.checksum" : null
   }
 
   guest_os_type = {
@@ -266,5 +287,4 @@ locals {
   }
 
   vm_name = "${var.distribution}${var.el_major_version}-${var.vm_name}"
-
 }

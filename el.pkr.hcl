@@ -3,7 +3,7 @@
 source "vmware-iso" "el" {
   http_content = {
     "/ks.cfg" = templatefile(
-      "${var.ks_template_path}", {
+      "${var.ks.template_path}", {
         major_version = var.el_major_version,
         network       = var.network,
         ks            = var.ks,

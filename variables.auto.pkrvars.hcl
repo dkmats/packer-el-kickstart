@@ -2,7 +2,6 @@
 arch             = "x86_64"
 distribution     = "almalinux"
 el_major_version = 10
-ks_template_path = "ks.cfg.tftpl"
 
 # Mandatory for Oracle Linux
 # oracle_minor_version = 0
@@ -22,14 +21,15 @@ output_directory  = "output"
 
 # Kickstart settings
 ks = {
-  # lang               = "en_US.UTF-8"
-  # vckeymap           = "jp-OADG109A"
-  # xlayouts           = "jp(OADG109A)"
-  # timezone           = "Asia/Tokyo"
-  # ntpservers         = [
-  #  "ntp1.jst.mfeed.ad.jp",
-  #  "ntp2.jst.mfeed.ad.jp",
-  #  "ntp3.jst.mfeed.ad.jp",
+  ks_template_path = "ks.cfg.tftpl"
+  # lang             = "en_US.UTF-8"
+  # vckeymap         = "jp-OADG109A"
+  # xlayouts         = "jp(OADG109A)"
+  # timezone         = "Asia/Tokyo"
+  # ntpservers = [
+  #   "ntp1.jst.mfeed.ad.jp",
+  #   "ntp2.jst.mfeed.ad.jp",
+  #   "ntp3.jst.mfeed.ad.jp",
   # ]
 
   # User settings
