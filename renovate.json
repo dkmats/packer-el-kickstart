@@ -1,0 +1,10 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "configMigration": true,
+  "ignoreTests": true,
+  "extends": [
+    "config:recommended",
+    "security:openssf-scorecard",
+    "github>aquaproj/aqua-renovate-config:file#2.2.1(.aqua/.*\\.ya?ml)"
+  ]
+}
