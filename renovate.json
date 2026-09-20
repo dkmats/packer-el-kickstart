@@ -1,7 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "configMigration": true,
-  "ignoreTests": true,
   "gitIgnoredAuthors": [
     "114827586+autofix-ci[bot]@users.noreply.github.com"
   ],
