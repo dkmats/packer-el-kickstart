@@ -11,5 +11,13 @@
     "helpers:pinGitHubActionDigests",
     "docker:pinDigests",
     "github>aquaproj/aqua-renovate-config:file#2.13.0(.aqua/.*\\.ya?ml)"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "aquaproj/aqua-registry"
+      ],
+      "automerge": true
+    }
   ]
 }
