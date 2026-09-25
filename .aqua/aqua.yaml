@@ -11,6 +11,6 @@ checksum:
   - linux
 registries:
 - type: standard
-  ref: v4.566.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.567.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: hashicorp/packer@v1.16.1
