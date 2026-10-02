@@ -19,7 +19,7 @@ jobs:
           persist-credentials: false
 
       - name: Validate Renovate Configuration with renovate-config-validator
-        uses: suzuki-shunsuke/github-action-renovate-config-validator@b850926b611b1f3d3fe3729776339c217834bf2c # v2.2.0
+        uses: suzuki-shunsuke/github-action-renovate-config-validator@v2.1.0
 
       - name: Upload npm logs
         if: always()
@@ -28,3 +28,4 @@ jobs:
           name: npm-logs
           path: /home/runner/.npm/_logs/
           if-no-files-found: warn
+
