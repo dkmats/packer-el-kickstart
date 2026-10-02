@@ -18,16 +18,7 @@
         "/^versions\\.pkr\\.hcl$/"
       ],
       "matchStrings": [
-        "version\\s*=\\s*\"=\\s*(?<currentValue>[^\"\\s]+)\"\\s+# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)"
-      ],
-      "versioningTemplate": "semver"
-    },
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/^versions\\.pkr\\.hcl$/"
-      ],
-      "matchStrings": [
+        "version\\s*=\\s*\"=\\s*(?<currentValue>[^\"\\s]+)\"\\s+# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)",
         "required_version\\s*=\\s*\"=\\s*(?<currentValue>[^\"\\s]+)\"\\s+# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)"
       ],
       "versioningTemplate": "semver"
