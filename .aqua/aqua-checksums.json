@@ -1,6 +1,11 @@
 {
   "checksums": [
     {
+      "id": "http/releases.hashicorp.com/packer/1.16.1/packer_1.16.1_darwin_amd64.zip",
+      "checksum": "E3655FB154E718526C3BCAACF327E6247E55945D2FEFD59F84F535750F7EF5C4",
+      "algorithm": "sha256"
+    },
+    {
       "id": "http/releases.hashicorp.com/packer/1.16.1/packer_1.16.1_darwin_arm64.zip",
       "checksum": "C45CB1F851971E8A340C4A36434273CF2C8EF0CC7F5B3AC65588A3539B1DF424",
       "algorithm": "sha256"

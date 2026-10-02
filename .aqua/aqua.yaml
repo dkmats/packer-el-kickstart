@@ -5,10 +5,7 @@
 checksum:
   enabled: true
   require_checksum: true
-  supported_envs:
-  - windows/amd64
-  - darwin/arm64
-  - linux
+  supported_envs: ["all"]
 registries:
 - type: standard
   ref: v4.570.0 # renovate: depName=aquaproj/aqua-registry
