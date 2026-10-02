@@ -32,13 +32,13 @@ jobs:
           aqua_version: v2.63.0
           aqua_args: i -l
 
-      - name: Format Packer files
-        if: steps.changes.outputs.packer == 'true'
-        run: packer fmt .
-
       - name: Fix aqua-checksums.json
         if: steps.changes.outputs.aqua == 'true'
         run: aqua upc -prune
+
+      - name: Format Packer files
+        if: steps.changes.outputs.packer == 'true'
+        run: packer fmt .
 
       - name: Run autofix.ci
         uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a # v1.3.4

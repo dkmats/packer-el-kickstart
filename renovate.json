@@ -27,8 +27,10 @@
   "packageRules": [
     {
       "matchPackageNames": [
-        "aquaproj/aqua-registry"
+        "aquaproj/aqua-registry",
+        "renovate/renovate"
       ],
+      "matchIsBreaking",
       "automerge": true
     }
   ]
