@@ -30,7 +30,7 @@
         "aquaproj/aqua-registry",
         "renovate/renovate"
       ],
-      "matchIsBreaking",
+      "matchIsBreaking": false,
       "automerge": true
     }
   ]
