@@ -1,8 +1,8 @@
 packer {
-  required_version = ">= 1.7.0"
+  required_version = "= 1.15.0" # renovate: datasource=github-releases depName=hashicorp/packer
   required_plugins {
     vmware = {
-      version = "= 2.1.6"
+      version = "= 2.1.0" # renovate: datasource=github-releases depName=vmware/packer-plugin-vmware
       source  = "github.com/vmware/vmware"
     }
   }

@@ -11,6 +11,19 @@
     "docker:pinDigests",
     "github>aquaproj/aqua-renovate-config:file#2.13.0(.aqua/.*\\.ya?ml)"
   ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^versions\\.pkr\\.hcl$/"
+      ],
+      "matchStrings": [
+        "version\\s*=\\s*\"=\\s*(?<currentValue>[^\"\\s]+)\"\\s+# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)",
+        "required_version\\s*=\\s*\"=\\s*(?<currentValue>[^\"\\s]+)\"\\s+# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)"
+      ],
+      "versioningTemplate": "semver"
+    }
+  ],
   "packageRules": [
     {
       "matchPackageNames": [
