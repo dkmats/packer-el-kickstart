@@ -20,3 +20,11 @@ jobs:
 
       - name: Validate Renovate Configuration with renovate-config-validator
         uses: suzuki-shunsuke/github-action-renovate-config-validator@b850926b611b1f3d3fe3729776339c217834bf2c # v2.2.0
+
+      - name: Upload npm logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: npm-logs
+          path: /home/runner/.npm/_logs/
+          if-no-files-found: warn
