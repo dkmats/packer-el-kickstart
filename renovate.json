@@ -24,13 +24,24 @@
       "versioningTemplate": "semver"
     }
   ],
+  {
+    "matchPackageNames": [
+      "aquaproj/aqua-registry",
+      "renovate/renovate",
+      "ghcr.io/renovatebot/renovate"
+    ],
+    "matchUpdateTypes": ["patch"],
+    "automerge": true
+  },
   "packageRules": [
     {
       "matchPackageNames": [
         "aquaproj/aqua-registry",
-        "renovate/renovate"
+        "renovate/renovate",
+        "ghcr.io/renovatebot/renovate"
       ],
       "matchIsBreaking": false,
+      "automergeSchedule": ["* * * * 0"],
       "automerge": true
     }
   ]
