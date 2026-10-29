@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-26.04
     timeout-minutes: 5
     container:
-      image: renovate/renovate:44.194.0@sha256:88a30063f3778615e959f9abf0bafe974915225dcf09e36a1be2702b745bb21b
+      image: renovate/renovate:44.197.0@sha256:d3aa7ee1726eb31bf0b8b006f07bcde28747a820e450cf7f4010c45913f5257f
       options: --user root
     steps:
       - name: Checkout the repository
