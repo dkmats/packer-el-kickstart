@@ -8,6 +8,6 @@ checksum:
   supported_envs: ["all"]
 registries:
 - type: standard
-  ref: v4.593.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.596.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: hashicorp/packer@v1.16.2
